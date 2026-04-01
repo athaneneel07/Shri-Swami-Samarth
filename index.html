@@ -333,17 +333,19 @@
     <!-- JavaScript -->
     <script>
         // =======================================================
+        // 🛑 CONFIGURATION 🛑
+        // =======================================================
         const SHEET_ID = "1rNiNCP41QKpooyI0-ZwCg6YcRqPFPZypkTP9RfwEgzA"; 
-        const MERCHANT_UPI_ID = "9422231321@fam"; // UPDATED UPI ID
+        const MERCHANT_UPI_ID = "9422231321@fam"; 
+        const ORDER_TRACKING_URL = "https://script.google.com/macros/s/AKfycbw3k9s53TciDRdUc6x5UPh-ZUmbObo3KU5iUeE_zaNxJlTxnOFgxKn0j_wEGeVgTHaLhg/exec"; 
         // =======================================================
 
         // COUPON SYSTEM 
-        // Fallback coupons (will be overridden if added to Google Sheet)
         let activeCoupons = {
             "WELCOME10": { type: "percent", value: 10 },
             "FLAT50": { type: "flat", value: 50 }
         };
-        let appliedCoupon = null; // Stores currently applied code
+        let appliedCoupon = null; 
 
         // Complete Menu Fallback
         const fallbackMenuData = {
@@ -632,6 +634,28 @@
             }
             const finalTotal = subTotal - discount;
 
+            let itemsString = cart.map(i => `${i.qty}x ${i.name}`).join(", ");
+
+            // --- GOOGLE SHEETS ORDER TRACKER POST ---
+            if(ORDER_TRACKING_URL && ORDER_TRACKING_URL !== "YOUR_WEB_APP_URL_HERE") {
+                const orderData = {
+                    orderType: orderType,
+                    orderName: orderName,
+                    orderPhone: orderPhone,
+                    orderLocation: orderLocation,
+                    items: itemsString,
+                    total: finalTotal.toFixed(0),
+                    coupon: appliedCoupon ? `${appliedCoupon} (-₹${discount.toFixed(0)})` : "None",
+                    paymentMethod: paymentMethod
+                };
+                fetch(ORDER_TRACKING_URL, {
+                    method: 'POST', mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(orderData)
+                }).catch(e => console.log("Tracker silent error"));
+            }
+
+            // --- WHATSAPP MESSAGE LOGIC ---
             let text = `Hello Samarth Veg, I would like to place a *${orderType.toUpperCase()}* order:\n\n*--- Order Details ---*\n`;
             cart.forEach(i => { let itemCost = i.price > 0 ? `₹${i.price * i.qty}` : 'Price on Request'; text += `▪ ${i.qty}x ${i.name} - ${itemCost}\n`; });
             
@@ -642,6 +666,7 @@
             text += `\n*(Prices for unpriced items will be added by the restaurant)*\nPlease confirm my order.`;
 
             const waLink = `https://wa.me/919595948655?text=${encodeURIComponent(text)}`;
+            
             if (paymentMethod === "UPI" && finalTotal > 0) {
                 alert(`You will be redirected to your UPI app to pay ₹${finalTotal.toFixed(0)}. Please return to the browser to send your order via WhatsApp if it doesn't open automatically!`);
                 const upiLink = `upi://pay?pa=${MERCHANT_UPI_ID}&pn=Samarth%20Veg&am=${finalTotal.toFixed(2)}&cu=INR&tn=Food%20Order`;
