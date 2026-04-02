@@ -175,7 +175,6 @@
             <p>Authentic, Delicious, and 100% Pure Vegetarian Cuisine</p>
             <p><i class="fas fa-map-marker-alt"></i> Kothrud, Pune</p>
             
-            <!-- NEW RATING DISPLAY -->
             <div class="hero-rating">
                 <span class="stars">
                     <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
@@ -195,7 +194,6 @@
         <div class="badge"><i class="fas fa-leaf"></i> 100% Pure Veg</div>
         <div class="badge"><i class="fas fa-hands-wash"></i> Sanitized Kitchen</div>
         <div class="badge"><i class="fas fa-carrot"></i> Fresh Ingredients</div>
-        <!-- UPDATED RATING BADGE -->
         <div class="badge"><i class="fas fa-star" style="color: gold;"></i> 3.95/5 Rated</div>
     </div>
 
@@ -333,6 +331,24 @@
             </div>
 
             <button class="checkout-btn" onclick="checkout()"><i class="fab fa-whatsapp"></i> Confirm & Place Order</button>
+        </div>
+    </div>
+
+    <!-- Success Confirmation Modal -->
+    <div class="cart-modal" id="success-modal" style="display: none; z-index: 1100;">
+        <div class="cart-content" style="text-align: center; max-width: 450px;">
+            <i class="fas fa-check-circle" style="font-size: 4rem; color: #25D366; margin-bottom: 15px;"></i>
+            <h2 style="color: var(--primary-color); margin-bottom: 10px;">Order Ready!</h2>
+            <p id="success-message" style="margin-bottom: 20px; font-size: 1.1rem; color: #555;">Your order summary is ready.</p>
+            
+            <div id="upi-instructions" style="display: none; background: #fff3e0; border-left: 4px solid var(--secondary-color); padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: left;">
+                <p style="margin-bottom: 8px; font-weight: bold; color: #e65100;"><i class="fas fa-mobile-alt"></i> Paying via UPI?</p>
+                <p style="font-size: 0.9rem; color: #444;">We've attempted to open your UPI app. Once your payment is successful, please return here and click the button below to confirm your order with the kitchen.</p>
+            </div>
+
+            <a id="wa-send-btn" href="#" target="_blank" class="checkout-btn" style="text-decoration: none; width: 100%; display: flex; justify-content: center; margin-bottom: 15px;"><i class="fab fa-whatsapp"></i> Send Order to Kitchen</a>
+            
+            <button onclick="closeSuccessModal()" style="background: none; border: none; color: #777; text-decoration: underline; cursor: pointer; font-size: 0.95rem;">Close & Back to Menu</button>
         </div>
     </div>
 
@@ -676,14 +692,50 @@
             text += `\n*(Prices for unpriced items will be added by the restaurant)*\nPlease confirm my order.`;
 
             const waLink = `https://wa.me/919595948655?text=${encodeURIComponent(text)}`;
+            const upiLink = `upi://pay?pa=${MERCHANT_UPI_ID}&pn=Samarth%20Veg&am=${finalTotal.toFixed(2)}&cu=INR&tn=Food%20Order`;
             
+            // --- NEW POPUP & REDIRECTION LOGIC ---
+            toggleCart(); // Close the checkout cart
+            showSuccessModal(paymentMethod, finalTotal, waLink, upiLink);
+
+            // Empty the cart to start fresh
+            cart = [];
+            appliedCoupon = null;
+            document.getElementById('couponCode').value = '';
+            document.getElementById('couponMessage').style.display = 'none';
+            updateCartUI();
+        }
+
+        // --- SUCCESS MODAL FUNCTION ---
+        function showSuccessModal(paymentMethod, finalTotal, waLink, upiLink) {
+            const modal = document.getElementById('success-modal');
+            const msg = document.getElementById('success-message');
+            const upiInst = document.getElementById('upi-instructions');
+            const waBtn = document.getElementById('wa-send-btn');
+
+            waBtn.href = waLink;
+            // Close modal when they click the WhatsApp button
+            waBtn.onclick = () => { closeSuccessModal(); }; 
+
+            modal.style.display = "flex";
+
             if (paymentMethod === "UPI" && finalTotal > 0) {
-                alert(`You will be redirected to your UPI app to pay ₹${finalTotal.toFixed(0)}. Please return to the browser to send your order via WhatsApp if it doesn't open automatically!`);
-                const upiLink = `upi://pay?pa=${MERCHANT_UPI_ID}&pn=Samarth%20Veg&am=${finalTotal.toFixed(2)}&cu=INR&tn=Food%20Order`;
-                window.open(waLink, "_blank"); window.location.href = upiLink; 
-            } else { window.open(waLink, "_blank"); }
-            
-            toggleCart();
+                msg.innerHTML = `Your total is <b>₹${finalTotal.toFixed(0)}</b>.`;
+                upiInst.style.display = "block";
+                
+                // Directly launch the UPI app (works cleanly on mobile via URL intent)
+                window.location.href = upiLink;
+            } else {
+                msg.innerHTML = `Your order summary is ready to be sent.`;
+                upiInst.style.display = "none";
+                
+                // Automatically open WhatsApp in new tab
+                window.open(waLink, "_blank");
+            }
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').style.display = "none";
         }
 
         function bookTableWA() {
