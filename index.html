@@ -10,19 +10,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* CSS Variables */
+        /* CSS Variables - ORANGE THEME */
         :root {
-            --primary-color: #b71c1c; /* Rich Red */
-            --secondary-color: #f57f17; /* Saffron/Gold */
-            --bg-color: #fcfcfc;
-            --text-color: #333;
+            --primary-color: #e65100; /* Vibrant Deep Orange */
+            --secondary-color: #ff8f00; /* Bright Citrus Orange */
+            --bg-color: #fffcf9; /* Very faint warm/orange tinted background */
+            --text-color: #7f3000; /* Dark burnt-orange/brown for readable body text */
             --white: #ffffff;
-            --light-gray: #f1f1f1;
+            --light-gray: #ffe0b2; /* Light orange panel backgrounds */
         }
 
         /* General Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--bg-color); color: var(--text-color); transition: padding-bottom 0.3s; }
+        
+        /* Headings - Bright Orange */
         h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary-color); }
         h2 { text-align: center; margin-bottom: 30px; font-size: 2.5rem; }
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
@@ -30,7 +32,8 @@
         /* Hero Section */
         .hero {
             height: 70vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            /* NEW BACKGROUND IMAGE */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white);
         }
         
@@ -39,21 +42,20 @@
         .status-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border-radius: 25px; font-size: 0.95rem; font-weight: 600; letter-spacing: 1px; }
         .status-open { background-color: #4CAF50; color: white; box-shadow: 0 0 10px rgba(76, 175, 80, 0.5); }
         .status-closed { background-color: #f44336; color: white; box-shadow: 0 0 10px rgba(244, 67, 54, 0.5); }
-        .wait-time-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border-radius: 25px; font-size: 0.95rem; font-weight: 600; background-color: var(--white); color: var(--text-color); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .wait-time-badge i { color: var(--secondary-color); }
+        .wait-time-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border-radius: 25px; font-size: 0.95rem; font-weight: 600; background-color: var(--white); color: var(--primary-color); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
-        .hero h1 { font-size: 4rem; color: var(--white); margin-bottom: 10px; }
-        .hero p { font-size: 1.2rem; margin-bottom: 10px; }
+        .hero h1 { font-size: 4rem; color: var(--secondary-color); margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 10px; color: #fff; }
         
         /* Hero Rating Display */
         .hero-rating { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; font-size: 1.2rem; }
-        .hero-rating .stars { color: #ffc107; letter-spacing: 2px; }
-        .hero-rating .rating-text { font-weight: 600; background: rgba(0,0,0,0.5); padding: 2px 10px; border-radius: 15px;}
+        .hero-rating .stars { color: var(--secondary-color); letter-spacing: 2px; }
+        .hero-rating .rating-text { font-weight: 600; background: rgba(0,0,0,0.5); padding: 2px 10px; border-radius: 15px; color: #fff;}
 
         .hero-btns { display: flex; gap: 15px; justify-content: center; margin-top: 20px;}
         .btn { padding: 12px 25px; border-radius: 25px; text-decoration: none; font-weight: 600; cursor: pointer; border: none; transition: 0.3s; }
-        .btn-primary { background: var(--secondary-color); color: white; }
-        .btn-primary:hover { background: #f9a825; color: #111; }
+        .btn-primary { background: var(--primary-color); color: white; }
+        .btn-primary:hover { background: #bf360c; color: white; }
         .btn-secondary { background: var(--white); color: var(--primary-color); }
 
         /* Badges */
@@ -63,7 +65,7 @@
 
         /* Legacy & Gallery */
         .legacy-section { background: var(--white); padding: 60px 20px; text-align: center; }
-        .legacy-text { max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; color: #555; }
+        .legacy-text { max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; color: var(--text-color); }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s;}
         .gallery-grid img:hover { transform: scale(1.05); }
@@ -71,34 +73,34 @@
         /* Menu Section */
         .menu-section { max-width: 900px; margin: 0 auto; }
         .menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap:10px;}
-        .accordion { background-color: var(--white); color: var(--text-color); cursor: pointer; padding: 18px; width: 100%; text-align: left; border: 1px solid #ddd; outline: none; font-size: 1.2rem; font-weight: 600; transition: 0.4s; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .accordion { background-color: var(--white); color: var(--primary-color); cursor: pointer; padding: 18px; width: 100%; text-align: left; border: 1px solid #ffd180; outline: none; font-size: 1.2rem; font-weight: 600; transition: 0.4s; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
         .active, .accordion:hover { background-color: var(--light-gray); }
         .panel { padding: 0 18px; background-color: white; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; border-radius: 0 0 8px 8px; margin-top: -10px; margin-bottom: 15px; border: 1px solid transparent; }
-        .panel.show { border-color: #ddd; border-top: none; padding: 15px 18px; overflow-y: auto; max-height: 400px !important;}
+        .panel.show { border-color: #ffd180; border-top: none; padding: 15px 18px; overflow-y: auto; max-height: 400px !important;}
         
         #loading-menu { text-align: center; padding: 40px; color: var(--primary-color); font-size: 1.2rem; font-weight: bold; }
         
-        .menu-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed #ccc; }
+        .menu-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed #ffb74d; }
         .menu-item:last-child { border-bottom: none; }
         .item-details { display: flex; flex-direction: column; }
-        .item-name { font-weight: 500; }
+        .item-name { font-weight: 500; color: var(--text-color); }
         .item-price { color: var(--primary-color); font-weight: 600; }
         .add-btn { background: var(--white); border: 1px solid var(--primary-color); color: var(--primary-color); padding: 5px 15px; border-radius: 5px; cursor: pointer; font-weight: 600; transition: 0.3s; }
         .add-btn:hover { background: var(--primary-color); color: white; }
 
         /* Table Reservation */
         .reservation-section { background: var(--white); padding: 60px 20px; }
-        .res-form { max-width: 600px; margin: 0 auto; background: var(--light-gray); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .res-form { max-width: 600px; margin: 0 auto; background: var(--light-gray); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(230, 81, 0, 0.1); }
         .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: 500; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; font-family: inherit; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 500; color: var(--text-color); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ffcc80; border-radius: 5px; font-size: 1rem; font-family: inherit; color: var(--text-color); }
         .form-group textarea { resize: vertical; }
         .res-buttons { display: flex; gap: 10px; margin-top: 20px; }
         .res-btn { flex: 1; padding: 12px; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; font-weight: bold; color: white; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; transition: 0.3s; }
         .btn-wa { background: #25D366; }
         .btn-wa:hover { background: #1ebe57; }
-        .btn-call { background: #007bff; }
-        .btn-call:hover { background: #0056b3; }
+        .btn-call { background: var(--primary-color); }
+        .btn-call:hover { background: #bf360c; }
 
         /* Bottom Sticky Cart Bar */
         .bottom-cart-bar { position: fixed; bottom: 0; left: 0; width: 100%; background-color: var(--primary-color); color: white; padding: 15px 20px; display: none; justify-content: space-between; align-items: center; z-index: 1000; box-shadow: 0 -4px 10px rgba(0,0,0,0.2); animation: slideUp 0.3s ease-out; }
@@ -106,48 +108,45 @@
         .bottom-cart-info { font-size: 1.1rem; font-weight: 600; display: flex; flex-direction: column;}
         .bottom-cart-info span { font-size: 0.85rem; font-weight: 400; opacity: 0.9; }
         .bottom-cart-btn { background-color: var(--white); color: var(--primary-color); border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
-        .bottom-cart-btn:hover { background-color: #e8e8e8; }
+        .bottom-cart-btn:hover { background-color: #ffe0b2; }
         
         /* Cart Modal */
-        .cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1005; justify-content: center; align-items: center; padding: 10px;}
+        .cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1005; justify-content: center; align-items: center; padding: 10px;}
         .cart-content { background: white; width: 100%; max-width: 500px; padding: 25px; border-radius: 10px; position: relative; max-height: 90vh; overflow-y: auto; }
-        .close-cart { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #777; }
-        .cart-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem; }
+        .close-cart { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--primary-color); }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem; color: var(--text-color); }
         
         /* Coupon Section */
-        .coupon-section { margin-top: 15px; padding-top: 15px; border-top: 2px solid #ddd; }
+        .coupon-section { margin-top: 15px; padding-top: 15px; border-top: 2px solid #ffcc80; }
         .coupon-input-group { display: flex; gap: 10px; margin-bottom: 5px; }
-        .coupon-input-group input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; text-transform: uppercase; font-weight: bold;}
+        .coupon-input-group input { flex: 1; padding: 10px; border: 1px solid #ffcc80; border-radius: 5px; text-transform: uppercase; font-weight: bold; color: var(--primary-color);}
         .coupon-input-group button { padding: 10px 15px; background: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s;}
-        .coupon-input-group button:hover { background: #8e0000; }
+        .coupon-input-group button:hover { background: #bf360c; }
         #couponMessage { font-size: 0.85rem; font-weight: 500; display: none; margin-bottom: 10px;}
         
         .cart-total { margin-top: 5px; font-size: 1.2rem; font-weight: bold; text-align: right; color: var(--primary-color); line-height: 1.4; }
         
-        .checkout-details { margin-top: 20px; padding-top: 15px; border-top: 1px dashed #ccc; }
+        .checkout-details { margin-top: 20px; padding-top: 15px; border-top: 1px dashed #ffcc80; }
         .checkout-details h4 { margin-bottom: 15px; color: var(--primary-color); }
-        .order-type-options { display: flex; gap: 15px; margin-bottom: 15px; background: var(--light-gray); padding: 10px; border-radius: 8px; }
+        .order-type-options { display: flex; gap: 15px; margin-bottom: 15px; background: var(--light-gray); padding: 10px; border-radius: 8px; color: var(--text-color); }
         .order-type-options label { cursor: pointer; font-weight: 500; display: flex; align-items: center; gap: 5px; }
 
-        .payment-options { margin-top: 15px; padding: 15px; background: var(--light-gray); border-radius: 8px; }
-        .payment-options h4 { margin-bottom: 10px; font-size: 1rem; color: #333; }
+        .payment-options { margin-top: 15px; padding: 15px; background: var(--light-gray); border-radius: 8px; color: var(--text-color); }
+        .payment-options h4 { margin-bottom: 10px; font-size: 1rem; color: var(--primary-color); }
         .payment-options label { margin-right: 15px; cursor: pointer; font-weight: 500; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px; }
         .checkout-btn { width: 100%; background: #25D366; color: white; border: none; padding: 15px; border-radius: 5px; font-size: 1.1rem; cursor: pointer; font-weight: bold; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 6px rgba(37, 211, 102, 0.3); transition: 0.3s;}
         .checkout-btn:hover { background: #1ebe57; }
 
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .review-card { background: var(--white); padding: 25px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
-        .stars { color: gold; margin-bottom: 10px; }
         .map-section { background: var(--white); padding: 60px 20px; text-align: center; }
-        .map-container { max-width: 1000px; margin: 20px auto; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .map-container { max-width: 1000px; margin: 20px auto; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(230, 81, 0, 0.1); }
         .direction-bar { background: var(--primary-color); color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-radius: 10px; max-width: 1000px; margin: 0 auto 20px auto; }
         .direction-btn { background: white; color: var(--primary-color); padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        footer { background: #222; color: white; text-align: center; padding: 20px; margin-top: 40px; padding-bottom: 30px;}
+        footer { background: #3e1b00; color: #ffcc80; text-align: center; padding: 20px; margin-top: 40px; padding-bottom: 30px;}
         
         .fab-container { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 998; transition: bottom 0.3s; }
         .fab { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; color: white; font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s; }
         .fab:hover { transform: scale(1.1); }
-        .fab-call { background-color: #007bff; }
+        .fab-call { background-color: var(--primary-color); }
         .fab-whatsapp { background-color: #25D366; }
 
         body.cart-active .fab-container { bottom: 90px; }
@@ -173,7 +172,7 @@
             
             <h1>Shri Swami Samarth</h1>
             <p>Authentic, Delicious, and 100% Pure Vegetarian Cuisine</p>
-            <p><i class="fas fa-map-marker-alt"></i> Alkapuri Society, Kothrud, Pune</p>
+            <p><i class="fas fa-map-marker-alt" style="color: var(--secondary-color);"></i> Alkapuri Society, Kothrud, Pune</p>
             
             <div class="hero-rating">
                 <span class="stars">
@@ -194,20 +193,20 @@
         <div class="badge"><i class="fas fa-leaf"></i> 100% Pure Veg</div>
         <div class="badge"><i class="fas fa-hands-wash"></i> Sanitized Kitchen</div>
         <div class="badge"><i class="fas fa-carrot"></i> Fresh Ingredients</div>
-        <div class="badge"><i class="fas fa-star" style="color: gold;"></i> 3.95/5 Rated</div>
+        <div class="badge"><i class="fas fa-star" style="color: var(--secondary-color);"></i> 3.95/5 Rated</div>
     </div>
 
     <!-- Interactive Menu Section -->
     <section id="menu" class="container menu-section">
         <h2>Our Menu</h2>
         <div class="menu-header">
-            <p style="color: #666;">Select items to add to your cart, and order via WhatsApp!</p>
+            <p style="color: var(--text-color);">Select items to add to your cart, and order via WhatsApp!</p>
             <button class="btn btn-primary" onclick="shareMenu()"><i class="fas fa-share-alt"></i> Share Menu</button>
         </div>
 
         <div id="loading-menu"><i class="fas fa-spinner fa-spin"></i> Loading latest menu from Kitchen...</div>
         <div id="menu-container"></div>
-        <p style="text-align: center; font-size: 0.9rem; color: #888; margin-top: 20px;">*Some custom or special items may not have direct prices listed. Please add them to your cart and inquire directly on WhatsApp!</p>
+        <p style="text-align: center; font-size: 0.9rem; color: #a66a4f; margin-top: 20px;">*Some custom or special items may not have direct prices listed. Please add them to your cart and inquire directly on WhatsApp!</p>
     </section>
 
     <!-- Table Reservation Form -->
@@ -244,10 +243,10 @@
     <section class="container">
         <h2>Flavors & Ambience</h2>
         <div class="gallery-grid">
-            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=500&q=80" alt="Restaurant Interior seating">
-            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80" alt="Samosa Dish">
-            <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=500&q=80" alt="Paneer">
-            <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80" alt="Shri Swami Samarth Food">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" alt="Restaurant Interior seating">
+            <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=500&q=80" alt="Paneer Gravy Dish">
+            <img src="https://images.unsplash.com/photo-1589301760014-d929f39ce9b0?auto=format&fit=crop&w=500&q=80" alt="South Indian Spread">
+            <img src="https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?auto=format&fit=crop&w=500&q=80" alt="Traditional Indian Thali/Dal">
         </div>
     </section>
 
@@ -266,14 +265,14 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2023 Shri Swami Samarth. All Rights Reserved.</p>
-        <p style="margin-top: 10px; color:#aaa; font-size:0.9rem;">For queries, call 078880 51777</p>
+        <p style="margin-top: 10px; opacity: 0.8; font-size:0.9rem;">For queries, call 078880 51777</p>
     </footer>
 
     <!-- Bottom Sticky Cart Bar -->
     <div class="bottom-cart-bar" id="bottomCartBar">
         <div class="bottom-cart-info">
             <div id="bottomItemCount">0 Items</div>
-            <span id="bottomTotalPrice">Estimated Total: ₹0</span>
+            <span id="bottomTotalPrice" style="color: #fff;">Estimated Total: ₹0</span>
         </div>
         <button class="bottom-cart-btn" onclick="toggleCart()">View Cart <i class="fas fa-shopping-bag"></i></button>
     </div>
@@ -284,7 +283,7 @@
             <i class="fas fa-times close-cart" onclick="toggleCart()"></i>
             <h3 style="margin-bottom: 20px;"><i class="fas fa-receipt"></i> Your Order</h3>
             <div id="cart-items">
-                <p style="text-align: center; color: #777;">Your cart is empty.</p>
+                <p style="text-align: center; color: var(--text-color);">Your cart is empty.</p>
             </div>
             
             <!-- COUPON SECTION -->
@@ -339,16 +338,16 @@
         <div class="cart-content" style="text-align: center; max-width: 450px;">
             <i class="fas fa-check-circle" style="font-size: 4rem; color: #25D366; margin-bottom: 15px;"></i>
             <h2 style="color: var(--primary-color); margin-bottom: 10px;">Order Ready!</h2>
-            <p id="success-message" style="margin-bottom: 20px; font-size: 1.1rem; color: #555;">Your order summary is ready.</p>
+            <p id="success-message" style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-color);">Your order summary is ready.</p>
             
-            <div id="upi-instructions" style="display: none; background: #fff3e0; border-left: 4px solid var(--secondary-color); padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: left;">
-                <p style="margin-bottom: 8px; font-weight: bold; color: #e65100;"><i class="fas fa-mobile-alt"></i> Paying via UPI?</p>
-                <p style="font-size: 0.9rem; color: #444;">We've attempted to open your UPI app. Once your payment is successful, please return here and click the button below to confirm your order with the kitchen.</p>
+            <div id="upi-instructions" style="display: none; background: #fff3e0; border-left: 4px solid var(--primary-color); padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: left;">
+                <p style="margin-bottom: 8px; font-weight: bold; color: var(--primary-color);"><i class="fas fa-mobile-alt"></i> Paying via UPI?</p>
+                <p style="font-size: 0.9rem; color: var(--text-color);">We've attempted to open your UPI app. Once your payment is successful, please return here and click the button below to confirm your order with the kitchen.</p>
             </div>
 
             <a id="wa-send-btn" href="#" target="_blank" class="checkout-btn" style="text-decoration: none; width: 100%; display: flex; justify-content: center; margin-bottom: 15px;"><i class="fab fa-whatsapp"></i> Send Order to Kitchen</a>
             
-            <button onclick="closeSuccessModal()" style="background: none; border: none; color: #777; text-decoration: underline; cursor: pointer; font-size: 0.95rem;">Close & Back to Menu</button>
+            <button onclick="closeSuccessModal()" style="background: none; border: none; color: var(--primary-color); text-decoration: underline; cursor: pointer; font-size: 0.95rem;">Close & Back to Menu</button>
         </div>
     </div>
 
@@ -619,7 +618,7 @@
                 }).join('');
             } else {
                 bottomBar.style.display = "none"; document.body.classList.remove("cart-active");
-                cartItemsContainer.innerHTML = '<p style="text-align: center; color: #777;">Your cart is empty.</p>';
+                cartItemsContainer.innerHTML = '<p style="text-align: center; color: var(--text-color);">Your cart is empty.</p>';
                 cartTotalModal.innerText = `Estimated Total: ₹0`;
                 const modal = document.getElementById("cart-modal");
                 if(modal.style.display === "flex") toggleCart();
@@ -755,3 +754,4 @@
     </script>
 </body>
 </html>
+    
